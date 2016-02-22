@@ -2,10 +2,10 @@
 @setlocal
 
 set NuGetExe="%~dp0NuGet.exe"
-set NuGetAdditionalCommandLineArgs=-verbosity quiet -configfile "%~dp0nuget.config" -Project2ProjectTimeOut 1200
+set NuGetAdditionalCommandLineArgs=-configfile "%~dp0nuget.config" -Project2ProjectTimeOut 1200
 
 REM If someone passed in a different Roslyn solution, use that.
-REM We make use of this when Roslyn is an sub-module for some 
+REM We make use of this when Roslyn is an sub-module for some
 REM internal repositories.
 set RoslynSolution=%1
 if "%RoslynSolution%" == "" set RoslynSolution=%~dp0Roslyn.sln

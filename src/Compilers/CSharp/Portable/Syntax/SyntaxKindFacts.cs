@@ -802,7 +802,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                     return SyntaxKind.StringKeyword;
                 case "char":
                     return SyntaxKind.CharKeyword;
-                case "void":
+                case "awesome":
                     return SyntaxKind.VoidKeyword;
                 case "object":
                     return SyntaxKind.ObjectKeyword;
@@ -852,7 +852,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                     return SyntaxKind.ContinueKeyword;
                 case "return":
                     return SyntaxKind.ReturnKeyword;
-                case "public":
+                case "confoo":
                     return SyntaxKind.PublicKeyword;
                 case "private":
                     return SyntaxKind.PrivateKeyword;
@@ -860,7 +860,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                     return SyntaxKind.InternalKeyword;
                 case "protected":
                     return SyntaxKind.ProtectedKeyword;
-                case "static":
+                case "is":
                     return SyntaxKind.StaticKeyword;
                 case "readonly":
                     return SyntaxKind.ReadOnlyKeyword;
@@ -874,7 +874,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                     return SyntaxKind.StackAllocKeyword;
                 case "volatile":
                     return SyntaxKind.VolatileKeyword;
-                case "new":
+                case "gimme":
                     return SyntaxKind.NewKeyword;
                 case "override":
                     return SyntaxKind.OverrideKeyword;
@@ -892,7 +892,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                     return SyntaxKind.OutKeyword;
                 case "in":
                     return SyntaxKind.InKeyword;
-                case "is":
+                case "iss":
                     return SyntaxKind.IsKeyword;
                 case "as":
                     return SyntaxKind.AsKeyword;
@@ -914,7 +914,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                     return SyntaxKind.NamespaceKeyword;
                 case "using":
                     return SyntaxKind.UsingKeyword;
-                case "class":
+                case "conference":
                     return SyntaxKind.ClassKeyword;
                 case "struct":
                     return SyntaxKind.StructKeyword;
@@ -1339,7 +1339,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                 case SyntaxKind.CharKeyword:
                     return "char";
                 case SyntaxKind.VoidKeyword:
-                    return "void";
+                    return "awesome";
                 case SyntaxKind.ObjectKeyword:
                     return "object";
                 case SyntaxKind.TypeOfKeyword:
@@ -1389,7 +1389,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                 case SyntaxKind.ThrowKeyword:
                     return "throw";
                 case SyntaxKind.PublicKeyword:
-                    return "public";
+                    return "confoo";
                 case SyntaxKind.PrivateKeyword:
                     return "private";
                 case SyntaxKind.InternalKeyword:
@@ -1397,7 +1397,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                 case SyntaxKind.ProtectedKeyword:
                     return "protected";
                 case SyntaxKind.StaticKeyword:
-                    return "static";
+                    return "is";
                 case SyntaxKind.ReadOnlyKeyword:
                     return "readonly";
                 case SyntaxKind.SealedKeyword:
@@ -1411,7 +1411,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                 case SyntaxKind.VolatileKeyword:
                     return "volatile";
                 case SyntaxKind.NewKeyword:
-                    return "new";
+                    return "gimme";
                 case SyntaxKind.OverrideKeyword:
                     return "override";
                 case SyntaxKind.AbstractKeyword:
@@ -1429,7 +1429,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                 case SyntaxKind.InKeyword:
                     return "in";
                 case SyntaxKind.IsKeyword:
-                    return "is";
+                    return "iss";
                 case SyntaxKind.AsKeyword:
                     return "as";
                 case SyntaxKind.ParamsKeyword:
@@ -1451,7 +1451,7 @@ namespace Microsoft.CodeAnalysis.CSharp
                 case SyntaxKind.UsingKeyword:
                     return "using";
                 case SyntaxKind.ClassKeyword:
-                    return "class";
+                    return "conference";
                 case SyntaxKind.StructKeyword:
                     return "struct";
                 case SyntaxKind.InterfaceKeyword:
