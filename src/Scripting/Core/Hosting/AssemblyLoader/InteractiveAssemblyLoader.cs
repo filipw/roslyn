@@ -10,6 +10,7 @@ using System.Reflection;
 using System.Reflection.Metadata;
 using System.Reflection.PortableExecutable;
 using System.Runtime.CompilerServices;
+using System.Runtime.Loader;
 using Roslyn.Utilities;
 
 namespace Microsoft.CodeAnalysis.Scripting.Hosting
@@ -91,7 +92,7 @@ namespace Microsoft.CodeAnalysis.Scripting.Hosting
             private string GetDebuggerDisplay() => IsDefault ? "uninitialized" : Identity.GetDisplayName() + (LocationOpt != null ? " @ " + LocationOpt : "");
         }
 
-        public InteractiveAssemblyLoader(MetadataShadowCopyProvider shadowCopyProvider = null)
+        public InteractiveAssemblyLoader(MetadataShadowCopyProvider shadowCopyProvider = null, AssemblyLoadContext assemblyLoadContext = null)
         {
             _shadowCopyProvider = shadowCopyProvider;
 
@@ -99,9 +100,12 @@ namespace Microsoft.CodeAnalysis.Scripting.Hosting
             _assembliesLoadedFromLocation = new Dictionary<Assembly, LoadedAssembly>();
             _loadedAssembliesBySimpleName = new Dictionary<string, List<LoadedAssemblyInfo>>(AssemblyIdentityComparer.SimpleNameComparer);
             _dependenciesWithLocationBySimpleName = new Dictionary<string, List<AssemblyIdentityAndLocation>>();
+            AssemblyLoadContext = assemblyLoadContext;
 
             _runtimeAssemblyLoader = AssemblyLoaderImpl.Create(this);
         }
+
+        internal AssemblyLoadContext AssemblyLoadContext { get; }
 
         public void Dispose()
         {

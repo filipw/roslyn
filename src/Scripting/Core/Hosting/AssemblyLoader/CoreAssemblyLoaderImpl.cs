@@ -11,16 +11,22 @@ namespace Microsoft.CodeAnalysis.Scripting.Hosting
     internal sealed class CoreAssemblyLoaderImpl : AssemblyLoaderImpl
     {
         private readonly LoadContext _inMemoryAssemblyContext;
+        private readonly AssemblyLoadContext _customLoadContext;
 
         internal CoreAssemblyLoaderImpl(InteractiveAssemblyLoader loader)
             : base(loader)
         {
-            _inMemoryAssemblyContext = new LoadContext(Loader, null);
+            _customLoadContext = loader.AssemblyLoadContext;
+
+            if (_customLoadContext == null)
+            {
+                _inMemoryAssemblyContext = new LoadContext(Loader, null);
+            }
         }
 
         public override Assembly LoadFromStream(Stream peStream, Stream pdbStream)
         {
-            return _inMemoryAssemblyContext.LoadFromStream(peStream, pdbStream);
+            return _customLoadContext != null ? _customLoadContext.LoadFromStream(peStream, pdbStream) : _inMemoryAssemblyContext.LoadFromStream(peStream, pdbStream);
         }
 
         public override AssemblyAndLocation LoadFromPath(string path)
@@ -28,8 +34,7 @@ namespace Microsoft.CodeAnalysis.Scripting.Hosting
             // Create a new context that knows the directory where the assembly was loaded from
             // and uses it to resolve dependencies of the assembly. We could create one context per directory,
             // but there is no need to reuse contexts.
-            var assembly = new LoadContext(Loader, Path.GetDirectoryName(path)).LoadFromAssemblyPath(path);
-
+            var assembly = _customLoadContext != null ? _customLoadContext.LoadFromAssemblyPath(path) : new LoadContext(Loader, Path.GetDirectoryName(path)).LoadFromAssemblyPath(path);
             return new AssemblyAndLocation(assembly, path, fromGac: false);
         }
 
